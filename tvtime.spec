@@ -39,7 +39,7 @@ wysokiej jako¶ci obrazu, co czyni go idealnym dla wideofili.
 %prep
 %setup -q
 %patch0 -p1
-%patch1	-p1
+%patch1 -p1
 
 %build
 cp -f /usr/share/automake/config.sub .
@@ -67,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/tvtime-configure
 %attr(755,root,root) %{_bindir}/tvtime-scanner
 %dir %{_sysconfdir}/tvtime
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/tvtime/*.xml
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/tvtime/*.xml
 %{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/apps/tvtime.png
 %{_pixmapsdir}/*
