@@ -7,6 +7,7 @@ License:	GPL
 Group:		Applications/Multimedia
 Source0:	http://dl.sourceforge.net/tvtime/%{name}-%{version}.tar.gz
 # Source0-md5:	b9b7e0ccdc6abb5cf07fb7633f8c8eb9
+Patch0:		%{name}-unused-code.patch
 URL:		http://tvtime.sourceforge.net/
 BuildRequires:	SDL-devel
 BuildRequires:	XFree86-devel
@@ -35,6 +36,7 @@ wysokiej jako¶ci obrazu, co czyni go idealnym dla wideofili.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
