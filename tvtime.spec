@@ -10,6 +10,7 @@ Source0:	http://dl.sourceforge.net/tvtime/%{name}-%{version}.tar.gz
 URL:		http://tvtime.sourceforge.net/
 BuildRequires:	SDL-devel
 BuildRequires:	XFree86-devel
+BuildRequires:	automake
 BuildRequires:	freetype-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libxml2-devel
