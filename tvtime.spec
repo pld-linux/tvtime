@@ -16,7 +16,7 @@ BuildRequires:	libpng-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	rpmbuild(macros) >= 1.121
 BuildRequires:	zlib-devel
-ExcludeArch:	ppc
+ExcludeArch:	ppc sparc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		specflags	-fomit-frame-pointer
