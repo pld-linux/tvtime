@@ -69,4 +69,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*
 %{_datadir}/tvtime
 %{_mandir}/man?/*
-%lang(de) %{_mandir}/man?/de/*
+%lang(de) %{_mandir}/de/man?/*
