@@ -1,0 +1,19 @@
+--- tvtime.org/src/vsync.c~	2003-09-23 15:23:05.000000000 +0200
++++ tvtime/src/vsync.c	2004-08-26 02:00:37.948560456 +0200
+@@ -32,6 +32,7 @@
+ 
+ #define BASEPORT 0x3da
+ 
++#if 0
+ void vgasync_cleanup( void )
+ {
+     fprintf( stderr, "vgasync: Cleaning up.\n" );
+@@ -87,7 +88,7 @@
+ 
+     if( !i ) fprintf( stderr, "vgasync: Timeout hit.\n" );
+ }
+-
++#endif
+ 
+ typedef enum {
+     _DRM_VBLANK_ABSOLUTE = 0x0,         /* Wait for specific vblank sequence number */
