@@ -6,7 +6,7 @@ License:	GPL
 Group:		Applications/Multimedia
 URL:		http://tvtime.sourceforge.net/
 Source0:	http://dl.sourceforge.net/tvtime/%{name}-%{version}.tar.gz
-# Source0-md5:	
+# Source0-md5:	b9b7e0ccdc6abb5cf07fb7633f8c8eb9
 BuildRequires:	freetype-devel
 BuildRequires:	zlib-devel
 BuildRequires:	libpng-devel
