@@ -44,6 +44,7 @@ wysokiej jako¶ci obrazu, co czyni go idealnym dla wideofili.
 
 
 %build
+cp -f /usr/share/automake/config.sub .
 %configure \
 	--disable-dependency-tracking
 %{__make} \
