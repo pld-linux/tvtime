@@ -1,6 +1,17 @@
---- tvtime.org/src/vsync.c~	2003-09-23 15:23:05.000000000 +0200
-+++ tvtime/src/vsync.c	2004-08-26 02:00:37.948560456 +0200
-@@ -32,6 +32,7 @@
+diff -urN tvtime-0.9.12.org/src/vsync.c tvtime-0.9.12/src/vsync.c
+--- tvtime-0.9.12.org/src/vsync.c	2004-08-26 03:10:14.410641712 +0200
++++ tvtime-0.9.12/src/vsync.c	2004-08-26 03:10:53.604683312 +0200
+@@ -22,7 +22,9 @@
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ #include <sys/time.h>
++#ifdef ARCH_X86
+ #include <sys/io.h>
++#endif
+ #include <sys/poll.h>
+ #include <fcntl.h>
+ #include <errno.h>
+@@ -32,6 +34,7 @@
  
  #define BASEPORT 0x3da
  
@@ -8,7 +19,7 @@
  void vgasync_cleanup( void )
  {
      fprintf( stderr, "vgasync: Cleaning up.\n" );
-@@ -87,7 +88,7 @@
+@@ -87,7 +90,7 @@
  
      if( !i ) fprintf( stderr, "vgasync: Timeout hit.\n" );
  }
