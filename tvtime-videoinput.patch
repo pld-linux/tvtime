@@ -1,0 +1,12 @@
+--- tvtime-0.9.15/src/videoinput.c.orig	2004-10-20 17:17:31.000000000 +0200
++++ tvtime-0.9.15/src/videoinput.c	2005-01-24 05:07:03.000000000 +0100
+@@ -1284,6 +1284,9 @@
+         if( vidin->isv4l2 ) {
+             struct v4l2_frequency freqinfo;
+ 
++            freqinfo.tuner = vidin->tunerid;
++            freqinfo.type = V4L2_TUNER_ANALOG_TV;
++
+             if( ioctl( vidin->grab_fd, VIDIOC_G_FREQUENCY, &freqinfo ) < 0 ) {
+                 fprintf( stderr, "videoinput: Tuner refuses to tell us the current frequency: %s\n",
+                          strerror( errno ) );
