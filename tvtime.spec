@@ -2,11 +2,12 @@ Summary:	A high quality TV viewer
 Summary(pl):	Program do ogl±dania TV w wysokiej jako¶ci
 Name:		tvtime
 Version:	0.9.15
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Multimedia
 Source0:	http://dl.sourceforge.net/tvtime/%{name}-%{version}.tar.gz
 # Source0-md5:	bf1b1547e8979cb6486584684e315847
+Patch0:		%{name}-videoinput.patch
 URL:		http://tvtime.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	automake
@@ -36,6 +37,7 @@ wysokiej jako¶ci obrazu, co czyni go idealnym dla wideofili.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 cp -f /usr/share/automake/config.sub .
