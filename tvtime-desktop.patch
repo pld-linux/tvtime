@@ -1,0 +1,8 @@
+--- tvtime-0.9.15/docs/net-tvtime.desktop.old	2005-03-17 17:24:55.277334752 +0100
++++ tvtime-0.9.15/docs/net-tvtime.desktop	2005-03-17 17:31:19.203969032 +0100
+@@ -7,4 +7,4 @@
+ GenericName=Television Viewer
+ Terminal=false
+ Type=Application
+-Categories=Application;AudioVideo;
++Categories=Video;TV;
