@@ -2,7 +2,7 @@ Summary:	A high quality TV viewer
 Summary(pl):	Program do ogl±dania TV w wysokiej jako¶ci
 Name:		tvtime
 Version:	0.9.12
-Release:	1
+Release:	1.1
 License:	GPL
 Group:		Applications/Multimedia
 Source0:	http://dl.sourceforge.net/tvtime/%{name}-%{version}.tar.gz
@@ -18,6 +18,8 @@ BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		specflags	-fomit-frame-pointer
+%define		_prefix		/usr/X11R6
+%define		_desktopdir	%{_applnkdir}/Multimedia
 
 %description
 tvtime is a high quality television application for use with video
@@ -44,9 +46,13 @@ wysokiej jako¶ci obrazu, co czyni go idealnym dla wideofili.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+mv -f $RPM_BUILD_ROOT%{_datadir}/applications/*.desktop \
+	$RPM_BUILD_ROOT%{_desktopdir}
 
 %find_lang %{name}
 
