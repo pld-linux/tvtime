@@ -1,19 +1,20 @@
 Summary:	A high quality TV viewer
 Summary(pl):	Program do ogl±dania TV w wysokiej jako¶ci
 Name:		tvtime
-Version:	0.9.15
-Release:	3
+Version:	0.99
+Release:	1
 License:	GPL
 Group:		Applications/Multimedia
 Source0:	http://dl.sourceforge.net/tvtime/%{name}-%{version}.tar.gz
-# Source0-md5:	bf1b1547e8979cb6486584684e315847
-Patch0:		%{name}-videoinput.patch
-Patch1:		%{name}-desktop.patch
+# Source0-md5:	4ebfe0e3e78716eab44d321b26b1b090
+Patch0:		%{name}-desktop.patch
 URL:		http://tvtime.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	automake
 BuildRequires:	freetype-devel
+BuildRequires:	gettext-devel
 BuildRequires:	libpng-devel
+BuildRequires:	libstdc++-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	rpmbuild(macros) >= 1.121
 BuildRequires:	zlib-devel
@@ -39,7 +40,6 @@ wysokiej jako¶ci obrazu, co czyni go idealnym dla wideofili.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 cp -f /usr/share/automake/config.sub .
@@ -74,3 +74,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/tvtime
 %{_mandir}/man?/*
 %lang(de) %{_mandir}/de/man?/*
+%lang(es) %{_mandir}/es/man?/*
