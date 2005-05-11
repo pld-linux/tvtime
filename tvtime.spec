@@ -16,7 +16,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libxml2-devel
-BuildRequires:	rpmbuild(macros) >= 1.121
+BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	zlib-devel
 ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
