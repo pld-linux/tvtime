@@ -18,7 +18,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	rpmbuild(macros) >= 1.121
 BuildRequires:	zlib-devel
-ExclusiveArch:	%{ix86} amd64
+ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		specflags	-fomit-frame-pointer
