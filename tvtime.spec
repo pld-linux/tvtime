@@ -1,5 +1,5 @@
 Summary:	A high quality TV viewer
-Summary(pl.UTF-8):   Program do oglądania TV w wysokiej jakości
+Summary(pl.UTF-8):	Program do oglądania TV w wysokiej jakości
 Name:		tvtime
 Version:	1.0.2
 Release:	1
