@@ -1,5 +1,5 @@
 Summary:	A high quality TV viewer
-Summary(pl):	Program do ogl±dania TV w wysokiej jako∂ci
+Summary(pl.UTF-8):   Program do oglƒÖdania TV w wysokiej jako≈õci
 Name:		tvtime
 Version:	1.0.2
 Release:	1
@@ -30,12 +30,12 @@ displays it on a computer monitor or projector. Unlike other
 television applications, tvtime focuses on high visual quality making
 it ideal for videophiles.
 
-%description -l pl
-tvtime to aplikacja do wysokiej jako∂ci telewizji przeznaczona do
-uøywania z kartami przechwytuj±cymi obraz. tvtime przetwarza wej∂cie z
-karty i wy∂wietla je na monitorze lub projektorze komputerowym. W
-przeciwieÒstwie do innych aplikacji telewizyjnych tvtime skupia siÍ na
-wysokiej jako∂ci obrazu, co czyni go idealnym dla wideofili.
+%description -l pl.UTF-8
+tvtime to aplikacja do wysokiej jako≈õci telewizji przeznaczona do
+u≈ºywania z kartami przechwytujƒÖcymi obraz. tvtime przetwarza wej≈õcie z
+karty i wy≈õwietla je na monitorze lub projektorze komputerowym. W
+przeciwie≈Ñstwie do innych aplikacji telewizyjnych tvtime skupia siƒô na
+wysokiej jako≈õci obrazu, co czyni go idealnym dla wideofili.
 
 %prep
 %setup -q
