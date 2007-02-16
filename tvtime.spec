@@ -2,14 +2,14 @@ Summary:	A high quality TV viewer
 Summary(pl.UTF-8):	Program do oglądania TV w wysokiej jakości
 Name:		tvtime
 Version:	1.0.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Multimedia
 Source0:	http://dl.sourceforge.net/tvtime/%{name}-%{version}.tar.gz
 # Source0-md5:	4b3d03afe61be239b08b5e522cd8afed
 Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-gcc.patch
 URL:		http://tvtime.sourceforge.net/
-BuildRequires:	XFree86-devel
 BuildRequires:	automake
 BuildRequires:	freetype-devel
 BuildRequires:	gettext-devel
@@ -17,6 +17,7 @@ BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	rpmbuild(macros) >= 1.213
+BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
 ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -32,14 +33,16 @@ it ideal for videophiles.
 
 %description -l pl.UTF-8
 tvtime to aplikacja do wysokiej jakości telewizji przeznaczona do
-używania z kartami przechwytującymi obraz. tvtime przetwarza wejście z
-karty i wyświetla je na monitorze lub projektorze komputerowym. W
-przeciwieństwie do innych aplikacji telewizyjnych tvtime skupia się na
-wysokiej jakości obrazu, co czyni go idealnym dla wideofili.
+używania z kartami przechwytującymi obraz. tvtime przetwarza
+wejście z karty i wyświetla je na monitorze lub projektorze
+komputerowym. W przeciwieństwie do innych aplikacji telewizyjnych
+tvtime skupia się na wysokiej jakości obrazu, co czyni go idealnym
+dla wideofili.
 
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 cp -f /usr/share/automake/config.sub .
