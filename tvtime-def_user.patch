@@ -1,0 +1,12 @@
+--- src/videodev2.h	2005-01-17 03:36:40.000000000 +0100
++++ src/videodev2.h-new	2007-05-30 23:31:53.568531335 +0200
+@@ -16,7 +16,8 @@
+ #ifdef __KERNEL__
+ #include <linux/time.h> /* need struct timeval */
+ #endif
+-#include <linux/compiler.h> /* need __user */
++
++#define __user __attribute__((noderef, address_space(1)))
+ 
+ /* for kernel versions 2.4.26 and below: */
+ #ifndef __user
