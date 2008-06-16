@@ -18,7 +18,11 @@ BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	rpmbuild(macros) >= 1.213
-BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXinerama-devel
+BuildRequires:	xorg-lib-libXt-devel
+BuildRequires:	xorg-lib-libXtst-devel
+BuildRequires:	xorg-lib-libXv-devel
+BuildRequires:	xorg-lib-libXxf86vm-devel
 BuildRequires:	zlib-devel
 ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
