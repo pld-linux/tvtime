@@ -55,3 +55,26 @@ diff -Naur tvtime-1.0.1/plugins/tomsmocomp.cpp tvtime-1.0.1-gcc41/plugins/tomsmo
  #include "tomsmocomp/TomsMoCompAll.inc"
  #undef  IS_SSE
  #undef  SSE_TYPE
+--- tvtime-1.0.2/src/xmltv.c.orig	2004-09-26 18:40:01.000000000 +0200
++++ tvtime-1.0.2/src/xmltv.c	2010-01-20 19:25:00.239975523 +0100
+@@ -118,9 +118,9 @@
+ typedef struct {
+     const char *code;
+     const char *name;
+-} locale_t;
++} locale_s;
+ 
+-static locale_t locale_table[] = {
++static locale_s locale_table[] = {
+     {"AA", "Afar"},           {"AB", "Abkhazian"},      {"AF", "Afrikaans"},
+     {"AM", "Amharic"},        {"AR", "Arabic"},         {"AS", "Assamese"},
+     {"AY", "Aymara"},         {"AZ", "Azerbaijani"},    {"BA", "Bashkir"},
+@@ -168,7 +168,7 @@
+     {"XH", "Xhosa"},          {"YO", "Yoruba"},         {"ZH", "Chinese"},
+     {"ZU", "Zulu"} };
+ 
+-const int num_locales = sizeof( locale_table ) / sizeof( locale_t );
++const int num_locales = sizeof( locale_table ) / sizeof( locale_s );
+ 
+ /**
+  * Timezone parsing code based loosely on the algorithm in
