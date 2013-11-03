@@ -1,0 +1,11 @@
+--- tvtime-1.0.2/src/tvtimeosd.c~	2005-09-08 03:05:18.000000000 +0200
++++ tvtime-1.0.2/src/tvtimeosd.c	2013-11-03 21:24:40.366698423 +0100
+@@ -558,7 +558,7 @@
+ 
+ void tvtime_osd_set_audio_mode( tvtime_osd_t *osd, const char *audiomode )
+ {
+-    snprintf( osd->audiomode_text, sizeof( osd->audiomode_text ), audiomode );
++    snprintf( osd->audiomode_text, sizeof( osd->audiomode_text ), "%s", audiomode );
+ }
+ 
+ void tvtime_osd_set_channel_number( tvtime_osd_t *osd, const char *text )
