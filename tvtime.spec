@@ -16,7 +16,7 @@ Patch5:		%{name}-format.patch
 URL:		http://tvtime.sourceforge.net/
 BuildRequires:	automake
 BuildRequires:	freetype-devel
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libxml2-devel
