@@ -9,14 +9,17 @@ Source0:	https://linuxtv.org/downloads/tvtime/%{name}-%{version}.tar.gz
 # Source0-md5:	97a09d1723c073eb2b8bea48a148a994
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-autodetect_textured_overlay.patch
+Patch2:		%{name}-x32.patch
 URL:		http://tvtime.sourceforge.net/
 BuildRequires:	alsa-lib-devel >= 1.0.9
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.52
+BuildRequires:	automake >= 1.6
 BuildRequires:	freetype-devel >= 2
 BuildRequires:	gcc >= 5:3.2
 BuildRequires:	gettext-tools
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool >= 2:1.5
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	xorg-lib-libX11-devel
@@ -27,8 +30,6 @@ BuildRequires:	xorg-lib-libXv-devel
 BuildRequires:	xorg-lib-libXxf86vm-devel
 BuildRequires:	zlib-devel
 Requires:	alsa-lib >= 1.0.9
-# ?
-ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		specflags	-fomit-frame-pointer
@@ -51,9 +52,15 @@ wysokiej jakości obrazu, co czyni go idealnym dla wideofili.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
-cp -f /usr/share/automake/config.sub .
+%{__gettextize}
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	--disable-silent-rules
 %{__make}
