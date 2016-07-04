@@ -1,0 +1,20 @@
+--- tvtime-1.0.10/configure.ac.orig	2016-02-27 13:49:28.000000000 +0100
++++ tvtime-1.0.10/configure.ac	2016-07-04 19:21:52.418654156 +0200
+@@ -173,15 +173,8 @@
+ 
+     dnl -Wall -Werror moved to the end to not disturb the configure script
+ 
+-    dnl -O3
+-    changequote(<<,>>)
+-    OPT_CFLAGS=`echo "$CFLAGS"|sed "s/-O[0-9]*//g;"`
+-    changequote([,])
+-    OPT_CFLAGS="$OPT_CFLAGS -O3"
+-    AC_TRY_CFLAGS([$OPT_CFLAGS],[CFLAGS=$OPT_CFLAGS])
+-
+-    dnl -fomit-frame-pointer
+-    OPT_CFLAGS="$CFLAGS -fomit-frame-pointer"
++    dnl default to -O3
++    OPT_CFLAGS="-O3 $CFLAGS"
+     AC_TRY_CFLAGS([$OPT_CFLAGS],[CFLAGS=$OPT_CFLAGS])
+ 
+     dnl -std=gnu99
