@@ -1,44 +1,39 @@
---- tvtime-1.0.2/src/xvoutput.c.orig	2005-08-14 19:35:50.000000000 +0200
-+++ tvtime-1.0.2/src/xvoutput.c	2010-03-06 19:43:26.000000000 +0100
-@@ -123,15 +123,37 @@
+--- tvtime-1.0.10/src/xvoutput.c.orig	2016-07-03 17:21:29.935850686 +0200
++++ tvtime-1.0.10/src/xvoutput.c	2016-07-03 21:09:03.995213629 +0200
+@@ -113,7 +113,7 @@
+     unsigned int release;
+     unsigned int dummy;
+     unsigned int adaptors;
+-    unsigned int i;
++    unsigned int i, txtFlag;
+     unsigned long j;
+     int has_fourcc = 0;
+     XvAdaptorInfo *adaptorInfo;
+@@ -128,15 +128,17 @@
  
      XvQueryAdaptors( display, output_window, &adaptors, &adaptorInfo );
  
-+    /* first attempt: check for textured layers with yuv2... */
-+    for( i = 0; i < adaptors; i++ ) {
-+        if(( adaptorInfo[ i ].type & XvImageMask ) && ( strstr( adaptorInfo[ i ].name, "Textured" ) != NULL )) {
-+            for( j = 0; j < adaptorInfo[ i ].num_ports; j++ ) {
-+                XvPortID port = adaptorInfo[ i ].base_id + j;
-+                if( xv_port_has_yuy2( port ) ) {
-+                    if( XvGrabPort( display, port, 0 ) == Success ) {
-+                        xv_port = port;
-+                        if( xvoutput_verbose ) {
-+                            fprintf( stderr, "xvoutput: Using TEXTURED XVIDEO adaptor %lu: %s.\n",
-+                                     port, adaptorInfo[ i ].name );
-+                        }
-+                        XvFreeAdaptorInfo( adaptorInfo );
-+                        return 1;
-+                    }
-+                    has_yuy2 = 1;
-+                }
-+            }
-+        }
-+    }
-+    /* second attempt: check only for layers with yuv2... */
++    for( txtFlag = 0; txtFlag <= 1; txtFlag++ ) { // try "Textured" first, then any
      for( i = 0; i < adaptors; i++ ) {
-         if( adaptorInfo[ i ].type & XvImageMask ) {
+-        if( adaptorInfo[ i ].type & XvImageMask ) {
++        if( (adaptorInfo[ i ].type & XvImageMask) && ((txtFlag > 0) || (strstr( adaptorInfo[ i ].name, "Textured" ) != NULL)) ) {
              for( j = 0; j < adaptorInfo[ i ].num_ports; j++ ) {
--                if( xv_port_has_yuy2( adaptorInfo[ i ].base_id + j ) ) {
--                    if( XvGrabPort( display, adaptorInfo[ i ].base_id + j, 0 ) == Success ) {
--                        xv_port = adaptorInfo[ i ].base_id + j;
-+                XvPortID port = adaptorInfo[ i ].base_id + j;
-+                if( xv_port_has_yuy2( port ) ) {
-+                    if( XvGrabPort( display, port, 0 ) == Success ) {
-+                        xv_port = port;
+ 		if( xv_port_has_fourcc( adaptorInfo[ i ].base_id + j,
+ 					fourcc_id, fourcc_str ) ) {
+                     if( XvGrabPort( display, adaptorInfo[ i ].base_id + j, 0 ) == Success ) {
+                         xv_port = adaptorInfo[ i ].base_id + j;
                          if( xvoutput_verbose ) {
-                             fprintf( stderr, "xvoutput: Using XVIDEO adaptor %lu: %s.\n",
--                                     adaptorInfo[ i ].base_id + j, adaptorInfo[ i ].name );
-+                                     port, adaptorInfo[ i ].name );
+-                            fprintf( stderr, "xvoutput: Using XVIDEO adaptor %lu: %s.\n",
++                            fprintf( stderr, "xvoutput: Using %sXVIDEO adaptor %lu: %s.\n",
++                                     (txtFlag == 0) ? "TEXTURED " : "",
+                                      adaptorInfo[ i ].base_id + j, adaptorInfo[ i ].name );
                          }
                          XvFreeAdaptorInfo( adaptorInfo );
-                         return 1;
+@@ -148,6 +150,7 @@
+             }
+         }
+     }
++    }
+ 
+     XvFreeAdaptorInfo( adaptorInfo );
+ 

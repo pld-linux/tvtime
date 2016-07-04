@@ -1,32 +1,33 @@
 Summary:	A high quality TV viewer
 Summary(pl.UTF-8):	Program do oglądania TV w wysokiej jakości
 Name:		tvtime
-Version:	1.0.2
-Release:	11
-License:	GPL
+Version:	1.0.10
+Release:	1
+License:	GPL v2+
 Group:		Applications/Multimedia
-Source0:	http://downloads.sourceforge.net/tvtime/%{name}-%{version}.tar.gz
-# Source0-md5:	4b3d03afe61be239b08b5e522cd8afed
-Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-gcc.patch
-Patch2:		%{name}-def_user.patch
-Patch3:		%{name}-autodetect_textured_overlay.patch
-Patch4:		%{name}-libpng-1.5.patch
-Patch5:		%{name}-format.patch
+Source0:	https://linuxtv.org/downloads/tvtime/%{name}-%{version}.tar.gz
+# Source0-md5:	97a09d1723c073eb2b8bea48a148a994
+Patch0:		%{name}-opt.patch
+Patch1:		%{name}-autodetect_textured_overlay.patch
 URL:		http://tvtime.sourceforge.net/
+BuildRequires:	alsa-lib-devel >= 1.0.9
 BuildRequires:	automake
-BuildRequires:	freetype-devel
+BuildRequires:	freetype-devel >= 2
+BuildRequires:	gcc >= 5:3.2
 BuildRequires:	gettext-tools
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	libxml2-devel
+BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	rpmbuild(macros) >= 1.213
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXScrnSaver-devel
+BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXinerama-devel
-BuildRequires:	xorg-lib-libXt-devel
-BuildRequires:	xorg-lib-libXtst-devel
 BuildRequires:	xorg-lib-libXv-devel
 BuildRequires:	xorg-lib-libXxf86vm-devel
 BuildRequires:	zlib-devel
+Requires:	alsa-lib >= 1.0.9
+# ?
 ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,17 +51,12 @@ wysokiej jakości obrazu, co czyni go idealnym dla wideofili.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p0
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
 cp -f /usr/share/automake/config.sub .
 %configure \
-	--disable-dependency-tracking
-%{__make} \
-	CFLAGS="%{rpmcflags}"
+	--disable-silent-rules
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -75,17 +71,32 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README* data/COPYING.* docs/html
+%doc AUTHORS ChangeLog NEWS README data/COPYING.* docs/html
 %attr(755,root,root) %{_bindir}/tvtime
 %attr(755,root,root) %{_bindir}/tvtime-command
 %attr(755,root,root) %{_bindir}/tvtime-configure
 %attr(755,root,root) %{_bindir}/tvtime-scanner
 %dir %{_sysconfdir}/tvtime
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/tvtime/*.xml
-%{_desktopdir}/*.desktop
-%{_iconsdir}/hicolor/*/apps/tvtime.png
-%{_pixmapsdir}/*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/tvtime/tvtime.xml
+%{_datadir}/appdata/tvtime.appdata.xml
+%{_desktopdir}/tvtime.desktop
+%{_iconsdir}/hicolor/*x*/apps/tvtime.png
 %{_datadir}/tvtime
-%{_mandir}/man?/*
-%lang(de) %{_mandir}/de/man?/*
-%lang(es) %{_mandir}/es/man?/*
+%{_mandir}/man1/tvtime.1*
+%{_mandir}/man1/tvtime-command.1*
+%{_mandir}/man1/tvtime-configure.1*
+%{_mandir}/man1/tvtime-scanner.1*
+%{_mandir}/man5/stationlist.xml.5*
+%{_mandir}/man5/tvtime.xml.5*
+%lang(de) %{_mandir}/de/man1/tvtime.1*
+%lang(de) %{_mandir}/de/man1/tvtime-command.1*
+%lang(de) %{_mandir}/de/man1/tvtime-configure.1*
+%lang(de) %{_mandir}/de/man1/tvtime-scanner.1*
+%lang(de) %{_mandir}/de/man5/stationlist.xml.5*
+%lang(de) %{_mandir}/de/man5/tvtime.xml.5*
+%lang(es) %{_mandir}/es/man1/tvtime.1*
+%lang(es) %{_mandir}/es/man1/tvtime-command.1*
+%lang(es) %{_mandir}/es/man1/tvtime-configure.1*
+%lang(es) %{_mandir}/es/man1/tvtime-scanner.1*
+%lang(es) %{_mandir}/es/man5/stationlist.xml.5*
+%lang(es) %{_mandir}/es/man5/tvtime.xml.5*
