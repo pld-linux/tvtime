@@ -2,7 +2,7 @@ Summary:	A high quality TV viewer
 Summary(pl.UTF-8):	Program do oglądania TV w wysokiej jakości
 Name:		tvtime
 Version:	1.0.11
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Applications/Multimedia
 Source0:	https://linuxtv.org/downloads/tvtime/%{name}-%{version}.tar.gz
