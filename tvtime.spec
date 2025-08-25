@@ -10,6 +10,7 @@ Source0:	https://linuxtv.org/downloads/tvtime/%{name}-%{version}.tar.gz
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-autodetect_textured_overlay.patch
 Patch2:		%{name}-x32.patch
+Patch3:		build.patch
 URL:		http://tvtime.sourceforge.net/
 BuildRequires:	alsa-lib-devel >= 1.0.9
 BuildRequires:	autoconf >= 2.52
@@ -53,6 +54,7 @@ wysokiej jakości obrazu, co czyni go idealnym dla wideofili.
 %patch -P0 -p1
 %patch -P1 -p1
 %patch -P2 -p1
+%patch -P3 -p1
 
 %build
 %{__gettextize}

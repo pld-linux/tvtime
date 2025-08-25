@@ -1,0 +1,19 @@
+--- tvtime-1.0.11/configure.ac~	2025-08-25 16:40:11.000000000 +0200
++++ tvtime-1.0.11/configure.ac	2025-08-25 16:40:47.343409849 +0200
+@@ -39,7 +39,7 @@ AC_CHECK_FUNCS([asprintf atexit fork exe
+ 
+ # Check for gettext
+ AM_GNU_GETTEXT_VERSION
+-AM_GNU_GETTEXT
++AM_GNU_GETTEXT([external])
+ 
+ dnl ---------------------------------------------
+ dnl zlib
+@@ -243,7 +243,6 @@ AC_CONFIG_FILES([
+ 	data/Makefile
+ 	plugins/Makefile
+ 	src/Makefile
+-	intl/Makefile
+ 	po/Makefile.in
+ 	m4/Makefile
+ 	docs/man/Makefile
