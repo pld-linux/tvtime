@@ -1,8 +1,10 @@
+# TODO:
+# - figure out why configure scripts checks for wrong gcc path (while priting another) and drop CC/CXX forcing in the spec
 Summary:	A high quality TV viewer
 Summary(pl.UTF-8):	Program do oglądania TV w wysokiej jakości
 Name:		tvtime
 Version:	1.0.11
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Applications/Multimedia
 Source0:	https://linuxtv.org/downloads/tvtime/%{name}-%{version}.tar.gz
@@ -64,6 +66,8 @@ wysokiej jakości obrazu, co czyni go idealnym dla wideofili.
 %{__autoheader}
 %{__automake}
 %configure \
+	CC=gcc \
+	CXX=g++ \
 	--disable-silent-rules
 %{__make}
 
